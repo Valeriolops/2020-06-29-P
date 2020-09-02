@@ -212,8 +212,8 @@ List<Match>result= new ArrayList<Match>();
 		
 		String sql="SELECT a1.MatchID,a2.MatchID,COUNT(DISTINCT(a1.PlayerID)) as peso  " + 
 				"FROM actions a1 ,actions a2   " + 
-				"WHERE a1.MatchID!= a2.MatchID AND a1.PlayerID=a2.PlayerID  " + 
-				"AND a1.TimePlayed>=?   " + 
+				"WHERE a1.MatchID != a2.MatchID AND a1.PlayerID=a2.PlayerID  " + 
+				"AND a1.TimePlayed>=?   AND a2.TimePlayed>=?   " + 
 				"GROUP BY a1.MatchID,a2.MatchID ";
 		
 		List<Adiacenza>result= new ArrayList<Adiacenza>();
@@ -224,13 +224,14 @@ List<Match>result= new ArrayList<Match>();
 			PreparedStatement st = conn.prepareStatement(sql);
 			
 			st.setInt(1,minuti );
+			st.setInt(2,minuti );
 			ResultSet res = st.executeQuery();
 			while (res.next()) {
 				
 				
 				Match m1= idMap.get(res.getInt("a1.MatchID"));
 				Match m2= idMap.get(res.getInt("a2.MatchID"));
-				Integer peso = res.getInt("peso");
+				Double peso = res.getDouble("peso");
 				Adiacenza ad = new Adiacenza(m1, m2, peso);
 				result.add(ad);
 

@@ -5,8 +5,8 @@ public class Adiacenza {
 	
 	private Match m1;
 	private Match m2;
-	private Integer peso;
-	public Adiacenza(Match m1, Match m2, Integer peso) {
+	private Double peso;
+	public Adiacenza(Match m1, Match m2, Double peso) {
 		super();
 		this.m1 = m1;
 		this.m2 = m2;
@@ -24,10 +24,10 @@ public class Adiacenza {
 	public void setM2(Match m2) {
 		this.m2 = m2;
 	}
-	public Integer getPeso() {
+	public Double getPeso() {
 		return peso;
 	}
-	public void setPeso(Integer peso) {
+	public void setPeso(Double peso) {
 		this.peso = peso;
 	}
 	@Override

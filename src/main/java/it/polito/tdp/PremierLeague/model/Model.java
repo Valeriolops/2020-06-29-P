@@ -18,7 +18,7 @@ public class Model {
 private PremierLeagueDAO dao;
 private Map<Integer,Match>idMapMatch;
 private Graph<Match,DefaultWeightedEdge>grafo;
-private Integer pesoMassimo;
+private Double pesoMassimo;
 
 
 
@@ -84,18 +84,20 @@ public List<Integer>getMese(){
 	
 	public void getPesoMassimo() {
 		
-		Integer pesoSuperMassimo=-1;
+		Double pesoSuperMassimo=-1.0;
 		for(DefaultWeightedEdge e : this.grafo.edgeSet()) {
-			Integer peso=(int) grafo.getEdgeWeight(e);
+			Double peso=grafo.getEdgeWeight(e);
 			if(peso>pesoSuperMassimo) {
 				pesoSuperMassimo=peso;
+				this.pesoMassimo=pesoSuperMassimo;
 			}
 			
-			this.pesoMassimo=pesoSuperMassimo;
+			
 			
 			
 			
 		}
+		
 	}
 	
 	
@@ -106,7 +108,7 @@ public List<Integer>getMese(){
 			if(grafo.getEdgeWeight(e)==this.pesoMassimo) {
 				Match m1= this.grafo.getEdgeSource(e);
 				Match m2= this.grafo.getEdgeTarget(e);
-				Integer peso=this.pesoMassimo;
+				Double peso=this.pesoMassimo;
 				Adiacenza ad = new Adiacenza(m1, m2, peso);
 				result.add(ad);
 				

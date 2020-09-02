@@ -64,7 +64,7 @@ public class FXMLController {
     		txtResult.appendText("\n "+ad.toString());
     	}
     	
-    	txtResult.appendText("la dimensione e :"+result.size());
+  
     	
     	
     }
