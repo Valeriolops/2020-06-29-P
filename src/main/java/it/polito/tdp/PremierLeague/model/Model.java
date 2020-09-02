@@ -14,4 +14,33 @@ import it.polito.tdp.PremierLeague.db.PremierLeagueDAO;
 
 public class Model {
 	
+	
+private PremierLeagueDAO dao;
+
+
+
+
+
+public Model() {
+	dao = new PremierLeagueDAO();
+	
+}
+	
+	
+	
+public List<Integer>getMese(){
+	return dao.getMese();
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

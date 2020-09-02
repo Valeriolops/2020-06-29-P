@@ -39,7 +39,7 @@ public class FXMLController {
     private TextField txtMinuti; // Value injected by FXMLLoader
 
     @FXML // fx:id="cmbMese"
-    private ComboBox<?> cmbMese; // Value injected by FXMLLoader
+    private ComboBox<Integer> cmbMese; // Value injected by FXMLLoader
 
     @FXML // fx:id="cmbM1"
     private ComboBox<?> cmbM1; // Value injected by FXMLLoader
@@ -57,6 +57,28 @@ public class FXMLController {
 
     @FXML
     void doCreaGrafo(ActionEvent event) {
+    	
+    	txtResult.clear();
+    	Integer minuti = null;
+    	try {
+    		minuti= Integer.parseInt(txtMinuti.getText());
+    	}catch(NumberFormatException e) {
+    		txtResult.appendText("Errore inserire un numero di minuti");
+    	}
+    	
+    	
+    	Integer mese= null;
+    	mese= cmbMese.getValue();
+    	if(mese == null) {
+    		txtResult.appendText("errore inserire un mese!!!");
+    	}
+    	
+    	
+    	
+    	
+    	
+    	
+    	
     	
     }
 
@@ -79,6 +101,7 @@ public class FXMLController {
     
     public void setModel(Model model) {
     	this.model = model;
+    	cmbMese.getItems().addAll(model.getMese());
   
     }
     

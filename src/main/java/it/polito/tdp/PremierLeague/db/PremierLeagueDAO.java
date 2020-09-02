@@ -89,4 +89,53 @@ public class PremierLeagueDAO {
 		}
 	}
 	
+	
+	public List<Integer> getMese(){
+		
+		String sql="SELECT DISTINCT(MONTH(m.Date)) AS mese   " + 
+				"FROM matches m  " + 
+				"ORDER BY mese  ";
+		
+		List<Integer>result= new ArrayList<Integer>();
+		
+		Connection conn = DBConnect.getConnection();
+
+		try {
+			PreparedStatement st = conn.prepareStatement(sql);
+			ResultSet res = st.executeQuery();
+			while (res.next()) {
+
+				Integer mese= res.getInt("mese");
+				result.add(mese);
+
+			}
+			conn.close();
+			return result;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
