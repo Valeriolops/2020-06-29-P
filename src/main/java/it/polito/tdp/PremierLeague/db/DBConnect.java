@@ -18,7 +18,7 @@ public class DBConnect {
 			config.setJdbcUrl(jdbcURL);
 			config.setUsername("root");
 			config.setPassword("root");
-			
+			//iniziamo
 			// configurazione MySQL
 			config.addDataSourceProperty("cachePrepStmts", "true");
 			config.addDataSourceProperty("prepStmtCacheSize", "250");
