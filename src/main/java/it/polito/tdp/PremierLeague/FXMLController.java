@@ -8,6 +8,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import it.polito.tdp.PremierLeague.model.Adiacenza;
 import it.polito.tdp.PremierLeague.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -53,6 +55,18 @@ public class FXMLController {
     @FXML
     void doConnessioneMassima(ActionEvent event) {
     	
+    
+    	
+    	
+    	
+    	List<Adiacenza>result= new ArrayList<Adiacenza>(model.getAdiacenza());
+    	for(Adiacenza ad : result) {
+    		txtResult.appendText("\n "+ad.toString());
+    	}
+    	
+    	txtResult.appendText("la dimensione e :"+result.size());
+    	
+    	
     }
 
     @FXML
@@ -74,7 +88,9 @@ public class FXMLController {
     	}
     	
     	
-    	
+    	model.creaGrafo(minuti, mese);
+    	txtResult.appendText("Grafo creato con "+model.getNVertici()+" vertici\n");
+    	txtResult.appendText("Il grafo ha  "+model.getNArchi()+"  archi");
     	
     	
     	
